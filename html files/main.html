@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymPRO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+      <a href="#" class="logo">GymPRO</a>
+      <div class="toggle" onclick="toggleMenu();"></div>
+
+      <!-- Menu -->
+      <ul class="menu">
+          <li><a href="#home" onclick="toggleMenu();">Home</a></li>
+          <li><a href="#about" onclick="toggleMenu();">About</a></li>
+          
+      </ul>
+  </nav>
+  <section>
+  
+    <div class="main-contain">
+      <div class="row">
+        <div class="container">
+          <div class="textfields">
+            {% if user %}
+                <p>Name: {{ user.name }}</p>
+                <p>Member ID: {{ user.m_id }}</p>
+                <p>PHONE NO: {{ user.phno }}</p>
+                <p>current package: {{ user.package_name }}</p>
+                <p>Your Trainer: {{ user.e_id.name }}</p>
+            {% endif %}
+        
+            <form method="get" action="{% url 'login' %}">
+                <button type="submit">logout</button>
+            </form>
+            <form method="post" action="{% url 'member_reset_password_page' user_id=user.id %}">
+                {% csrf_token %}
+                <button type="submit">Reset Password</button>
+            </form>
+          </div>
+        </div>
+       
+        <div class="container">
+        
+        </div>
+      </div>
+      <div class="container-3">
+      
+      </div>
+      
+    </div>
+    
+    
+   
+    
+  
+  </section>
+  
+ <footer id="footer">
+    ishowdbms
+ </footer>
+  
+  
+ 
+</body>
+</html>
